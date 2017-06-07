@@ -40,7 +40,7 @@ RUN rm -rf /tmp/scripts
 # error out if it cannot.
 WORKDIR /tmp
 
-#ENTRYPOINT ["/entrypoint"]
+ENTRYPOINT ["/entrypoint"]
 
 # Start the main process
 CMD ["/opt/spark/bin/launch.sh"]
