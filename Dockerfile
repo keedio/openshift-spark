@@ -11,7 +11,7 @@ RUN yum install -y epel-release tar java && \
     yum clean all
 
 RUN cd /opt && \
-    curl -o spark-2.1.1-bin-keedio-spark-openshift.tgz $DISTRO_LOC | \
+    curl -o spark-2.1.1-bin-keedio-spark-openshift.tgz $DISTRO_LOC &&\
         tar -xvzf spark-2.1.1-bin-keedio-spark-openshift.tgz && \
     ln -s $DISTRO_NAME spark
 
