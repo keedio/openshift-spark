@@ -2,16 +2,13 @@ FROM centos:latest
 
 
 USER root
-#ARG DISTRO_LOC=https://archive.apache.org/dist/spark/spark-2.1.0/spark-2.1.0-bin-hadoop2.7.tgz
-ARG DISTRO_LOC=https://doc-0s-1g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/5797s4qviib01ripcm1kagfrsh0ajh7q/1496822400000/16544746259682377476/*/0B3Ktk66X20qlTzFESzMtTXplVVk?e=download
-#ARG DISTRO_NAME=spark-2.1.0-bin-hadoop2.7
 ARG DISTRO_NAME=spark-2.1.1-bin-keedio-spark-openshift
 
 RUN yum install -y epel-release tar java && \
     yum clean all
 
 RUN cd /opt && \
-    curl -o spark-2.1.1-bin-keedio-spark-openshift.tgz $DISTRO_LOC &&\
+    curl -o spark-2.1.1-bin-keedio-spark-openshift.tgz 'https://dl.dropboxusercontent.com/content_link/UC9Z8AXMjynLdFamLJJ6iK7hQZoBku40hQddX7uCsrLxUkjtHrIfgqE8YyoLv7H0/file?dl=1' -H 'accept-encoding: gzip, deflate, sdch, br' -H 'accept-language: es-ES,es;q=0.8' -H 'upgrade-insecure-requests: 1' -H 'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36' -H 'accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8' -H 'authority: dl.dropboxusercontent.com' -H 'cookie: uc_session=Cw8ABqgPpVREQcWRpJ1WCjHRyP2OVZfFPFb7FDVItLsw1VBFTHU7qxQafwVZ93cT' --compressed &&\
         tar -xvzf spark-2.1.1-bin-keedio-spark-openshift.tgz && \
     ln -s $DISTRO_NAME spark
 
