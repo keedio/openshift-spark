@@ -3,15 +3,14 @@ FROM centos:latest
 MAINTAINER Matthew Farrellee <matt@cs.wisc.edu>
 
 USER root
-ARG DISTRO_LOC=https://archive.apache.org/dist/spark/spark-2.1.1/spark-2.1.1-bin-hadoop2.7.tgz
-ARG DISTRO_NAME=spark-2.1.1-bin-hadoop2.7
+ARG DISTRO_LOC=https://doc-0s-1g-docs.googleusercontent.com/docs/securesc/ha0ro937gcuc7l7deffksulhg5h7mbp1/ojer6rsc3bckki7qlek6319t6k1veo9t/1498197600000/16544746259682377476/*/0B3Ktk66X20qlTzFESzMtTXplVVk?e=download
+ARG DISTRO_NAME=spark-2.1.1-bin-keedio-spark-openshift
 
 RUN yum install -y epel-release tar java && \
     yum clean all
 
 RUN cd /opt && \
-    curl $DISTRO_LOC  | \
-        tar -zx && \
+    curl -o $DISTRO_NAME.tgz $DISTRO_LOC  && tar -xvzf $DISTRO_NAME.tgz && \
     ln -s $DISTRO_NAME spark
 
 # when the containers are not run w/ uid 0, the uid may not map in
